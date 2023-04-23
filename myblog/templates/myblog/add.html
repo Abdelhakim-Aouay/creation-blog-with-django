@@ -1,16 +1,21 @@
-{% extends 'etudiant/base.html' %}
-
+{% extends 'myblog/base.html' %}
+{% block title %} 
+Create A new Blog Post
+{% endblock %} 
 
 {% block content %}
-<h2 class="text-center alert alert alert-info">ajouter un nouveau etudiant</h2>
-<form method="POST" class="form-group"> 
+<h2 class="text-center alert alert alert-info">Add Blog  Post </h2>
+
+<div class="form-group">
+<form method="POST" > 
     {% csrf_token %} 
-    {{ myform.as_table }}
+    {{ form.as_p }}
 <br>
-<input  class="btn btn-info" type="submit", class ="form-control mt-4", value="ajouter", class="btn btn-outline-primary">
+<input  class="btn btn-info" type="submit", class ="form-control mt-4", value="Post", class="btn btn-outline-primary">
 </form>        
 <div class=text-center>
-    <a class="btn btn-primary" href="{% url 'show' %}">Show</a>
+    <a class="btn btn-primary" href="#"></a>
 
+</div>
 </div>
 {% endblock content %}

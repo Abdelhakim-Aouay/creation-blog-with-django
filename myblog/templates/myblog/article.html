@@ -1,14 +1,23 @@
 {% extends 'myblog/base.html' %}
 
+{% block title %} 
+{{post.title_tag}}
+{% endblock %} 
+
 {% block content %}
+<h2 class="text-center alert alert alert-info">Blog Deatil </h2>
 
 
-    <h1>{{ post.title }}</h1>
-    <small> By:  {{ post.author.first_name }}  -
-    {{ post.author.last_name }}</small><br>
+    <h1>{{ object.title }}</h1>
+    <small> By:  {{ object.author.first_name }}  -
+    {{ object.author.last_name }}</small><br> -{{ post.created_at}}
     <hr>
     <br>
     {{ post.body }}
 
+<br> 
+<br>
+
+    <a href= "{% url 'home' %}"> Back </a>
 
 {% endblock content %}

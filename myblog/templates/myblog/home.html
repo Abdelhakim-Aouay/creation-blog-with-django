@@ -1,14 +1,26 @@
 {% extends 'myblog/base.html' %}
 
+    
+{% block title %} 
+Blog List
+{% endblock %} 
 
 {% block content %}
+<h2 class="text-center alert alert alert-info"> Blog List </h2>
+
 <ul>
 {% for post in object_list %}
     <li><a href="{% url 'article' post.pk %}">{{ post.title }} </a>   --  {{ post.author.first_name }}  -
-    {{ post.author.last_name }}<br>
- 
-    {{ post.body }}</li>
+    {{ post.author.last_name }} <br>
+        
+    {{ post.body }} </li><br>
 
+        <a class="btn btn-primary" href="{% url 'update_post' post.pk %}">update</a> <br> <hr>
+
+        <a href="{% url 'supp' post.pk %}" button type="button" class="btn btn-danger">Delete</button><a><br><hr>
+
+    
 {% endfor %}
 </ul>
 {% endblock content %}
+
