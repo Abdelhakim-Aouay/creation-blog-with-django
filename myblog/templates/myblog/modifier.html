@@ -6,6 +6,8 @@ Update Blog Post
 {% block content %}
 <h2 class="text-center alert alert alert-info">Update Blog  Post </h2>
 
+{% if user.is_authenticated %}
+
 <div class="form-group">
 <form method="POST" > 
     {% csrf_token %} 
@@ -15,7 +17,10 @@ Update Blog Post
 </form>        
 <div class=text-center>
     <a class="btn btn-primary" href="#"></a>
+{% else %}
+    you are not allowed here
 
+{% endif %}
 </div>
 </div>
 {% endblock content %}

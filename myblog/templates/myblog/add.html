@@ -4,6 +4,9 @@ Create A new Blog Post
 {% endblock %} 
 
 {% block content %}
+
+{% if user.is_authenticated %}
+
 <h2 class="text-center alert alert alert-info">Add Blog  Post </h2>
 
 <div class="form-group">
@@ -13,9 +16,8 @@ Create A new Blog Post
 <br>
 <input  class="btn btn-info" type="submit", class ="form-control mt-4", value="Post", class="btn btn-outline-primary">
 </form>        
-<div class=text-center>
-    <a class="btn btn-primary" href="#"></a>
 
 </div>
-</div>
+{% endif %}
+
 {% endblock content %}

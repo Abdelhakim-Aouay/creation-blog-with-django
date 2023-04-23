@@ -5,6 +5,9 @@
 {% endblock %} 
 
 {% block content %}
+
+{% if user.is_authenticated %}
+
 <h2 class="text-center alert alert alert-info">Blog Deatil </h2>
 
 
@@ -19,5 +22,8 @@
 <br>
 
     <a href= "{% url 'home' %}"> Back </a>
+{% else %}
+ what are you doing here
+{% endif %}
 
 {% endblock content %}

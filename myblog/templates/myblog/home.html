@@ -15,10 +15,12 @@ Blog List
         
     {{ post.body }} </li><br>
 
+    {% if user.is_authenticated %}
+    
         <a class="btn btn-primary" href="{% url 'update_post' post.pk %}">update</a> <br> <hr>
 
         <a href="{% url 'supp' post.pk %}" button type="button" class="btn btn-danger">Delete</button><a><br><hr>
-
+    {% endif %}
     
 {% endfor %}
 </ul>
