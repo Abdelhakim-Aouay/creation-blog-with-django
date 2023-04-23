@@ -1,0 +1,39 @@
+{% extends 'etudiant/base.html' %}
+
+
+{% block supp %}
+
+{% if data %}
+<h2 class="text-center alert alert alert-info">Details des Etudiants</h2>
+<table class="table table-striped">
+<thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">username</th>
+      <th scope="col">password</th>
+      <th scope="col">email</th>
+      
+    </tr>
+</thead>
+    <tbody>
+        {% for details in data %}
+
+    <tr>
+        <th scope="row">{{details.id}}</th>
+        <td>{{details.username}}</td>
+        <td>{{details.password}}</td>
+        <td>{{ details.email }}</td>
+         
+
+    </tr>
+    
+        {% endfor %}
+    </tbody>
+</table> 
+
+{% else %}
+<div class="alert alert-primary" role="alert">
+    la table de donnée est vide
+  </div>
+{% endif %}
+{% endblock supp%}

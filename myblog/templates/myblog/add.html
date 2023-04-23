@@ -1,0 +1,16 @@
+{% extends 'etudiant/base.html' %}
+
+
+{% block content %}
+<h2 class="text-center alert alert alert-info">ajouter un nouveau etudiant</h2>
+<form method="POST" class="form-group"> 
+    {% csrf_token %} 
+    {{ myform.as_table }}
+<br>
+<input  class="btn btn-info" type="submit", class ="form-control mt-4", value="ajouter", class="btn btn-outline-primary">
+</form>        
+<div class=text-center>
+    <a class="btn btn-primary" href="{% url 'show' %}">Show</a>
+
+</div>
+{% endblock content %}

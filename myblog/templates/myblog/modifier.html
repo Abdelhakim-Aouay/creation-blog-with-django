@@ -1,0 +1,24 @@
+{% extends 'etudiant/base.html' %}
+
+
+{% block mise_ajour %}
+
+<div class ="row">
+
+    <h2 class="text-center alert alert alert-info">Modifier les coordonnés de l'etudiant </h2>
+
+    <form method="POST" class="form-group" class="in-lign" action="{% url 'show' %}" >
+        {% csrf_token %} 
+        {{ form.errors }}
+        {{ form.as_p }}
+        
+        
+        <input  class="btn btn-info" type="submit", class ="form-control mt-4", value="update", class="btn btn-outline-primary">
+
+
+        <a href="{% url 'show'  %}" class="btn btn-danger" role="button" aria-pressed="true">Retour en arrière</a>
+
+
+    </form>
+</div>
+{% endblock mise_ajour %}

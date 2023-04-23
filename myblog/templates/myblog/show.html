@@ -1,0 +1,40 @@
+{% extends 'etudiant/base.html' %}
+
+
+{% block show %}
+<h2 class="text-center alert alert alert-info">Details des Etudiants</h2>
+<table class="table table-striped">
+<thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">username</th>
+      <th scope="col">password</th>
+      <th scope="col">email</th>
+      <th scope="col">actions</th>
+    </tr>
+</thead>
+    <tbody>
+        {% for details in data %}
+
+    <tr>
+        <th scope="row">{{details.id}}</th>
+        <td>{{details.username}}</td>
+        <td>{{details.password}}</td>
+        <td>{{ details.email }}</td>
+        <td>
+            <a href="{% url 'supp' details.id %}" class="btn btn-danger" role="button" aria-pressed="true">supprimer</a>
+            <form method="post" action="{% url 'modifier' details.id %}">
+                {% csrf_token %}
+                
+                <input type="submit" value="modifier">
+            </form>
+            
+
+        </td> 
+
+    </tr>
+    
+        {% endfor %}
+    </tbody>
+</table> 
+{% endblock show %}
