@@ -7,16 +7,18 @@ Update Blog Post
 <h2 class="text-center alert alert alert-info">Update Blog  Post </h2>
 
 {% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
 
-<div class="form-group">
-<form method="POST" > 
-    {% csrf_token %} 
-    {{ form.as_p }}
-<br>
-<input  class="btn btn-info" type="submit", class ="form-control mt-4", value="Update", class="btn btn-outline-primary">
-</form>        
-<div class=text-center>
-    <a class="btn btn-primary" href="#"></a>
+        <div class="form-group">
+        <form method="POST" > 
+            {% csrf_token %} 
+            {{ form.as_p }}
+        <br>
+    
+        <input  class="btn btn-info" type="submit", class ="form-control mt-4", value="Update", class="btn btn-outline-primary">
+        </form>   
+    {% endif %}     
+
 {% else %}
     you are not allowed here
 

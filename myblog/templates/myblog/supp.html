@@ -8,13 +8,18 @@ Delete Blog Post
 <h2 class="text-center alert alert alert-info">Delete Blog  Post </h2>
 
 {% if user.is_authenticated %}
-<div class="form-group">
-<form method="POST" > 
-    {% csrf_token %} 
-<br>
-<strong> Are you sure to delete: {{object}} </strong> <br>
-<input  class="btn btn-danger" type="submit", class ="form-control mt-4", value="Delete" >
-</form>        
+    {% if user.id == post.author.id %}
+        <div class="form-group">
+        <form method="POST" > 
+            {% csrf_token %} 
+        <br>
+    
+        <strong> Are you sure to delete: {{object}} </strong> <br>
+        <input  class="btn btn-danger" type="submit", class ="form-control mt-4", value="Delete" >
+        </form>
+    {% else %}
+        you are not allowed here    
+    {% endif %}    
 {% else %}
 you are not allowed here
 {% endif %}
