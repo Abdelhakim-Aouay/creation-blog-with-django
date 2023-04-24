@@ -10,5 +10,6 @@ urlpatterns = [
     path('article/supp_post/<int:pk>', views.DeletePostView.as_view(), name="supp"),
     path('add_category/', views.AddCategoryView.as_view(), name="add_category"),
     path('category/<str:cat>', views.categoryView, name="categoryview"),
+   
 ]
 

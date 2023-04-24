@@ -9,7 +9,6 @@ choice_list=[]
 for item in CHOIX:
     choice_list.append(item)
 
-print(choice_list)
 class AddForm(forms.ModelForm):
     class Meta:
         model=Post
