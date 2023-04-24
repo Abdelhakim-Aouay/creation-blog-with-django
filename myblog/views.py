@@ -1,14 +1,16 @@
 from django.shortcuts import render
-from.models import Post
+from.models import Post, Category
 from django.views.generic import ListView, DeleteView, DetailView, CreateView, UpdateView
 from.forms import AddForm
+from django.urls import reverse_lazy
 
 
 
 class HomeListView(ListView):
     model=Post
     template_name="myblog/home.html"
-    ordering=['-id']
+    ordering=['-created_at']
+    #ordering=['-id']
     
     
 class ArticleDetailView(DetailView):
@@ -19,7 +21,20 @@ class AddPostView(CreateView):
     model=Post
     template_name="myblog/add.html"
     form_class=AddForm
-from django.urls import reverse_lazy
+    
+class AddCategoryView(CreateView):
+    model=Category
+    template_name="myblog/category.html"
+    fields ="__all__"
+    
+def categoryView(request, cat):
+    category_post=Post.objects.filter(category=cat)
+    return render(request, 'myblog/categories.html', {'cat':cat.title(), 'category_post': category_post})
+
+print(Post.objects.filter(category="encoding"))
+    
+    
+
 
 
 class UpdatePostView(UpdateView):

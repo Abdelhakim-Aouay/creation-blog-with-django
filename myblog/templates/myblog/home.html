@@ -10,10 +10,13 @@ Blog List
 
 <ul>
 {% for post in object_list %}
-    <li><a href="{% url 'article' post.pk %}">{{ post.title }} </a>   --  {{ post.author.first_name }}  -
+
+    
+    <li><a href="{% url 'article' post.pk %}">{{ post.title }} </a> -
+        <li><a href="{% url 'categoryview' post.category %}">{{ post.category }}</a>   --  {{ post.author.first_name }}  -
     {{ post.author.last_name }} <br>
         
-    {{ post.body }} </li><br>
+    {{ post.body| safe}} </li><br>
 
     {% if user.is_authenticated %}
     

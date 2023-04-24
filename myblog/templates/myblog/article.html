@@ -16,7 +16,7 @@
     {{ object.author.last_name }}</small><br> -{{ post.created_at}}
     <hr>
     <br>
-    {{ post.body }}
+    {{  post.body|slice:":200 "|safe }}
 
 <br> 
 <br>
