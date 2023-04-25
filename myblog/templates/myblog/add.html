@@ -12,6 +12,10 @@ Create A new Blog Post
 <div class="form-group">
 <form method="POST" > 
     {% csrf_token %} 
+    
+    {{ form.media }}
+
+
     {{ form.as_p }}
 <br>
 <input  class="btn btn-info" type="submit", class ="form-control mt-4", value="Post", class="btn btn-outline-primary">
@@ -20,7 +24,7 @@ Create A new Blog Post
 <script>
 
     var name="{{user.id}}";
-    document.getElementById("auteur").value=name;
+    document.getElementById("auteur").value=name; // pour que dans le champ author dans la forme prend id de user
 
 
 </script>
