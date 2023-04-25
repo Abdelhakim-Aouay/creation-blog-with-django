@@ -25,7 +25,8 @@ class Post(models.Model):
     author=models.ForeignKey(User, on_delete=models.CASCADE)
     body=models.TextField()
     created_at=models.DateTimeField(auto_now_add=True)
-    category=models.CharField(max_length=100, default="coding")   
+    category=models.CharField(max_length=100, default="coding")
+    Likes=models.ManyToManyField(User, related_name="blog_post")  # post can have many likes and user can have many likes also
 
     class Meta:
         verbose_name = ("Post")
