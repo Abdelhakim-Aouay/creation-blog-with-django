@@ -6,6 +6,8 @@ Update Blog Post
 {% block content %}
 <h2 class="text-center alert alert alert-info">Update Blog  Post </h2>
 
+{{ user.userprofile.user }}
+
 {% if user.is_authenticated %}
     {% if user.id == post.author.id %}
 

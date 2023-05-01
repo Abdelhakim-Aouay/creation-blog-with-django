@@ -10,12 +10,11 @@ Create A new Blog Post
 <h2 class="text-center alert alert alert-info">Add Blog  Post </h2>
 
 <div class="form-group">
-<form method="POST" > 
+<form method="POST"  enctype="multipart/form-data" > 
     {% csrf_token %} 
     
     {{ form.media }}
-
-
+    
     {{ form.as_p }}
 <br>
 <input  class="btn btn-info" type="submit", class ="form-control mt-4", value="Post", class="btn btn-outline-primary">

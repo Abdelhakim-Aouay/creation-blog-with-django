@@ -12,11 +12,12 @@ for item in CHOIX:
 class AddForm(forms.ModelForm):
     class Meta:
         model=Post
-        fields=["title", 'title_tag', "author",  'category', "body"]
+        fields=["title", 'title_tag', 'image', "author",  'category', "body"]
     
         widgets = {
             'title': forms.TextInput(attrs={'class' : 'form-control'}),
             'title_tag': forms.TextInput(attrs={'class' : 'form-control'}),
+            #'header_image': forms.ImageField()
             'author': forms.TextInput(attrs={'class' : 'form-control', "value":"","id":"auteur", 'type': 'hidden'}),
             #'author': forms.Select(attrs={'class' : 'form-control'}),
             'category': forms.Select(choices=CHOIX,attrs={'class' : 'form-control'}),

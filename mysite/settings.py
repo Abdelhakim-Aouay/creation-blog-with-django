@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,12 +129,19 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+import os
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -141,3 +150,29 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL='home'
 LOGOUT_REDIRECT_URL='home'
+
+
+# django jet adm
+
+# active le mode compact du menu latéral dans l'interface d'administration
+JET_SIDE_MENU_COMPACT = True
+JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
+
+#configuration des modes d'affichages "themes"
+JET_THEMES = [
+    {
+        'theme':  'light-violet',
+        'color':  '#a464c4',
+        'title':  'Light Violet'
+    },
+    {
+        'theme':  'light-blue',
+        'color':  '#5EADDE',
+        ' title':  'Bleu clair'
+    },
+    {
+        'theme':  'light-gray',
+        'color':  '#222',
+        'title':  'Gris clair'
+    }
+]
