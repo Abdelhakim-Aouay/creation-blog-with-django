@@ -1,4 +1,5 @@
 {% extends 'myblog/base.html' %}
+{% load static %}
 
 {% block title %} 
 {{post.title_tag}}
@@ -36,5 +37,49 @@ post author : {{post.author.id}}
 {% else %}
  what are you doing here
 {% endif %}
+<br><br>
+
+<div class="card mb-3" >
+    <div class="row no-gutters">
+      <div class="col-md-2">
+
+    {% if  post.author.userprofile.profile_pic %}
+        <img src="{{ post.author.userprofile.profile_pic.url}}" width=200 height=200 class ="card-img">
+    {% else %}
+        <img src="{% static 'myblog/images/profil.jpg' %}" width=200 height=200 class ="card-img">
+    {% endif %}
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">
+                {{post.author.first_name}}
+                {{post.author.last_name}}
+                    
+           </h5>
+           {% if post.author.userprofile %}
+                <p class="small text-muted">
+                <a href="{% url 'show_profile' post.author.userprofile.id %}"> Profile Page </a> | 
+            {% endif %}
+
+           <p class="small text-muted">
+            {% if post.author.userprofile.facebook %}
+
+                <a href="{{post.author.userprofile.facebook}}">facebook</a> | 
+            {% endif %}
+            {% if post.author.userprofile.twitter %}
+                <a href="{{post.author.userprofile.twitter}}"> twitter</a> |
+            {% endif %}
+            {% if post.author.userprofile.linkedin %}
+                <a href="{{post.author.userprofile.linkedin}}">linkedin</a> 
+            {% endif %}
+            
+            <br>
+          <p class="card-text">{{ post.author.userprofile.bio }}</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
 
 {% endblock content %}
