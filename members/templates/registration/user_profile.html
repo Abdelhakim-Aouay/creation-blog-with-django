@@ -26,10 +26,7 @@ Blog List
                 {{page_user.user.last_name}}
                     
            </h5>
-           {% if page_user %}
-                <p class="small text-muted">
-                <a href="{% url 'show_profile' page_user.id %}"> Profile Page </a> | 
-            {% endif %}
+        
 
            <p class="small text-muted">
             {% if page_user.facebook %}

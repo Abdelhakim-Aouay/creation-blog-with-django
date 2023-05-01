@@ -10,6 +10,10 @@ urlpatterns = [
     #path('password/', auth_views.PasswordChangeView.as_view(template_name='registration/change-password.html')),
     path('password/', views.PasswordsChangeView.as_view()),
     path('<int:pk>/profile/', views.ShowProfileView.as_view(), name="show_profile"),
+    path('<int:pk>/edit_profile_page/', views.EditProfilePageView.as_view(), name="edit_profile_page"),
+    path('create_profile_page/', views.CreateProfileView.as_view(), name="create_profile_page"),
+
+
 
     
 ]
