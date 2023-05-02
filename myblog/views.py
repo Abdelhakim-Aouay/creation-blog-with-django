@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from.models import Post, Category
 from django.views.generic import ListView, DeleteView, DetailView, CreateView, UpdateView
-from.forms import AddForm
+from.forms import AddForm, AddCommentForm
 from django.urls import reverse_lazy
+from .models import Comments
 
 
 
@@ -36,6 +37,19 @@ class AddPostView(CreateView):
         context = super().get_context_data(**kwargs)
         context["cat_menu"] = cat_menu
         return context
+    
+
+class AddCommentView(CreateView):
+    model=Comments
+    template_name="myblog/add_comment.html"
+    form_class= AddCommentForm
+    success_url= reverse_lazy('home')
+    ordering=['-date_added']
+    def form_valid(self, form):
+        form.instance.post_id=self.kwargs['pk']
+        return super().form_valid(form)
+
+    
     
 class AddCategoryView(CreateView):
     model=Category

@@ -37,7 +37,7 @@ post author : {{post.author.id}}
 {% else %}
  what are you doing here
 {% endif %}
-<br><br>
+
 
 <div class="card mb-3" >
     <div class="row no-gutters">
@@ -81,5 +81,30 @@ post author : {{post.author.id}}
     </div>
   </div>
   
+  <br><br>
+  <hr>
+  <h2>Comments ...</h2>
+  <br>
+  {% if not post.comments.all%}
+            No comment yet ...<a href="{% url 'add-comment' post.pk %}">Add Comment</a>
+  
+  {% else %}
+  <br><br>
+  <a href="{% url 'add-comment' post.pk %}"> Add comment</a>
+  <br><br>
+        {% for comment in post.comments.all %}
+                  <strong>
+                      {{ comment.name }} - {{comment.date_added}}
+                  </strong>
+                  <br>
+                  {{ comment.body}}
+                  <br>
+                  
+        {% endfor %}
+        <a href="{% url 'add-comment' post.pk %}"> Add comment</a>
+  {% endif %}
+  
+  <br><br>
 
+  
 {% endblock content %}

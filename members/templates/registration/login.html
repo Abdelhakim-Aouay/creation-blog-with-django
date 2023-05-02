@@ -9,10 +9,18 @@ Login
 <div class="form-group">
 <form method="POST" > 
     {% csrf_token %} 
-    {{ form.as_p }}
+    <form>
+        <div class="form-group">
+          <input type="text" class="form-control" name="username" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" name="password" placeholder="Password">
+        </div>
 <br>
 <input  class="btn btn-info" type="submit", class ="form-control mt-4", value="Login">
 </form>        
 
 </div>
+<br><br>
+Not registerd Sign Up <a href="{% url 'register' %}"> here </a>
 {% endblock content %}
